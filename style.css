@@ -8,15 +8,74 @@ body {
     width: 100%;
     height: 100vh;
     background-color: darkcyan;
-
+    font-family: sans-serif;
     display: grid;
     grid-template-columns: 1fr 400px;
 }
 
 .products-container {
     background-color: darkgreen;
+    display: grid;
+    grid-template-columns: repeat(2, 200px);
+    grid-auto-rows: 160px;
+    gap: 20px;
+    align-content: center;
+    justify-content: center;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    background-color: darkturquoise;
+    font-size: 24px;
+    border-radius: 15px;
+}
+
+.product b {
+    margin-top: 10px;
+}
+
+.product button {
+    padding: 8px 16px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .cart {
     background-color: darkgoldenrod;
+}
+
+.cart-item {
+    padding: 20px;
+    font-size: 24px;
+    background-color: #fff;
+}
+
+.cart-item button {
+    padding: 8px 16px;
+    background-color: red;
+    color: whitesmoke;
+    border: none;
+    cursor: pointer;
+}
+
+.cart-item select {
+    padding: 6px 28px;
+    margin: 10px 0;
+}
+
+.cart-item p {
+    margin: 10px 0;
+}
+
+.cart-item:not(.cart-item:last-child){
+    margin-bottom: 10px;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
 }
