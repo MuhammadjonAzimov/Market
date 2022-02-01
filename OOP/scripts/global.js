@@ -91,45 +91,8 @@ const productsData = [
     }
 ]
 
-function renderProducts(products) {
-    const productsContainer = document.querySelector(".products-container")
+const products = new Product(productsData)
+const cart = new Cart()
 
-    for (let product of products) {
-        const div = document.createElement("div")
-        div.classList.add("product")
-
-        div.innerHTML = `
-            <img class="product-img" src="${product.imgurl}" alt="">
-            <h3>${product.title}</h3>
-            <B>${product.price} so'm</b>
-            <button onclick="addProductToCart(${product.id})" id="add-to-cart" data-product-id="${product.id}">Savatchaga qo'shish</button>
-        `
-
-        productsContainer.append(div)
-    }
-}
-
-function addProductToCart(id) {
-    const selectedProduct = productsData.filter(product => product.id == id)
-    const selectedProductPrice = selectedProduct[0].price
-    const selectedProductTitle = selectedProduct[0].title
-    const selectedProductId = selectedProduct[0].id
-    const hasSameProduct = cartData.filter(cartItem => cartItem.productId == id).length > 0
-
-    if (hasSameProduct) return alert("Siz buni savatga solgansiz")
-
-    cartData.push({
-        id: cartData[cartData.length - 1]?.id + 1 || 1,
-        productId: selectedProductId,
-        title: selectedProductTitle,
-        productprice: selectedProductPrice,
-        quantity: 1,
-        totalPrice: selectedProductPrice
-    })
-
-    localStorage.setItem("cartData", JSON.stringify(cartData))
-
-    renderCart(cartData)
-}
-
-renderProducts(productsData)
+renderProducts()
+renderCart()
